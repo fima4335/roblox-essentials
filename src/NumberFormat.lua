@@ -20,4 +20,8 @@ local function NumberFormat(number, precision)
 	exp = math.min(exp, #suffixes - 1)
 
 	local scaled = number / (10 ^ (exp * 3))
-	local formatStr = "%."
+	local formatStr = "%." .. precision .. "f%s"
+	return string.format(formatStr, scaled, suffixes[exp + 1])
+end
+
+return NumberFormat
